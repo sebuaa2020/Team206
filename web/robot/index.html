@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0"/>
+    <title>咖啡Robot</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            width: 100%;
+            height: 90px;
+            margin-bottom: 50px;
+            background-color: #4C2B1C;
+        }
+
+        header h2 {
+            color: white;
+            margin: 0;
+            padding: 20px 0 0 20px;
+        }
+
+        body {
+            background-color: #F2F2F2;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #container {
+            margin: 0 auto;
+        }
+
+        #login {
+            margin: 0 0 30px 15px;
+            padding: 0 20px;
+            height: 300px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        #introduction {
+            margin: 0 0 30px 15px;
+            padding: 0 20px;
+            height: 500px;
+            background-color: white;
+            border-radius: 10px;
+            transition: linear 0.1s;
+        }
+
+        #introduction:hover {
+            transform: scale(1.1);
+            color: orange;
+        }
+
+        ul {
+            width: 200px;
+        }
+
+        ul li {
+            margin: 15px 0;
+        }
+
+        li input {
+            border-radius: 5px;
+            position: relative;
+            right: -10px;
+
+        }
+
+        #bt_login {
+            padding: 5px 10px;
+            margin-top: 10px;
+            position: relative;
+            right: -120px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4C2B1C;
+            color: white;
+        }
+
+        #bt_login:hover {
+            color: #d58512;
+        }
+
+        pre {
+            font-size: 14px;
+            white-space: pre-wrap;
+            border: none;
+            background-color: white;
+            padding: 0;
+            margin: 0;
+            color: #4C2B1C;
+            font-weight: bold;
+        }
+
+        img {
+            width: 180px;
+            height: 220px;
+            margin: 0 auto;
+        }
+
+        #check {
+            color: red;
+            font-size: 16px;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <h2>咖啡Robot | <small>欢迎访问</small></h2>
+</header>
+
+<div id="container">
+    <div id="login" class="col-xs-11 col-sm-5 col-sm-push-5 col-md-3 col-md-push-7">
+        <h2>用户登录</h2>
+        <ul>
+            <li>
+                <strong>用户名 (username)</strong>
+                <label><input type="text" id="username" name="username"></label>
+            </li>
+            <li>
+                <strong>密码 (password)</strong>
+                <label><input type="password" id="password" name="password"></label>
+            </li>
+            <li id="check">
+
+            </li>
+        </ul>
+        <div>
+            <input id="bt_login" type="submit" value="登录 Login">
+        </div>
+    </div>
+
+    <div id="introduction" class="col-xs-11 col-sm-4 col-sm-pull-5 col-md-4 col-md-pull-2">
+        <h3>项目简介</h3>
+        <pre>
+<strong>咖啡Robot:</strong>
+     配置启智ROS机器人 + 升级机械手爪。应用场景为咖啡店内送咖啡与回收咖啡杯。
+<strong>产品优势：</strong>
+  1、操作简单，易于使用。
+  2、营造咖啡店安静、无人打扰的氛围，更加舒适安心。
+  3、体现咖啡店服务高端化，让顾客更愿意光顾与消费。
+  <img src="img/robot.png" alt="ROBOT">
+</pre>
+    </div>
+</div>
+
+</body>
+
+<script src="js/jquery-1.10.2.js"></script>
+<script>
+    $(function () {
+        $('#bt_login').click(function () {
+            var name = $('#username').val();
+            var pw = $('#password').val();
+            $.ajax({
+                url: 'ajax_check.php',
+                data: {
+                    username: name,
+                    password: pw
+                },
+                dataType: 'JSON',
+                type: 'POST',
+                success(data) {
+                    if (data === 'success') {
+                        window.location.href = 'welcome.php';
+                    } else {
+                        $('#check').text(data)
+                    }
+                },
+                error(d1, d2, d3) {
+                    console.log(d1);
+                    console.log(d2);
+                    console.log(d3);
+                    alert('网络繁忙，请稍后再试!')
+                }
+            })
+        })
+    });
+
+    $(document).keydown(function (event) {
+        if (event.keyCode === 13) {
+            $('#bt_login').click();
+        }
+    })
+
+</script>
+
+</html>
