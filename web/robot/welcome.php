@@ -28,12 +28,13 @@ $username = $_SESSION['logged'];
             height: 90px;
             background-color: #4C2B1C;
         }
-        #name{
+
+        #name {
             float: left;
             margin-right: 10px;
         }
 
-        #logout{
+        #logout {
             margin-right: 5px;
             padding: 5px 5px;
             width: 50px;
@@ -41,7 +42,7 @@ $username = $_SESSION['logged'];
             border: none;
             border-radius: 5px;
             font-size: 16px;
-            float:left;
+            float: left;
         }
 
         h4 {
@@ -79,29 +80,30 @@ $username = $_SESSION['logged'];
             height: 75px;
             line-height: 75px;
             text-align: center;
-            background-color: #F2F2F2;
-            color: black;
-            font-size: 30px;
-            font-weight: bold;
-        }
-        #manual:hover{
-            color: #CB602D !important;
-            cursor:pointer;
-        }
-
-        #intelligent {
-            height: 75px;
-            line-height: 75px;
-            text-align: center;
             background-color: #2B2B2B;
             color: white;
             font-size: 30px;
             font-weight: bold;
         }
 
-        #intelligent:hover{
+        #manual:hover {
             color: #CB602D !important;
-            cursor:pointer;
+            cursor: pointer;
+        }
+
+        #intelligent {
+            height: 75px;
+            line-height: 75px;
+            text-align: center;
+            background-color: #F2F2F2;
+            color: black;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        #intelligent:hover {
+            color: #CB602D !important;
+            cursor: pointer;
         }
 
         #decoration {
@@ -115,7 +117,7 @@ $username = $_SESSION['logged'];
             font-weight: bold;
         }
 
-        #intelligent_dis{
+        #intelligent_dis {
             text-align: center;
             margin: 20px 0;
             font-size: 20px;
@@ -165,17 +167,18 @@ $username = $_SESSION['logged'];
 
 <div id="container">
     <div id="mode" class="col-xs-12 col-sm-2">Mode</div>
-    <div id="manual" class="col-xs-6 col-sm-5">手动模式</div>
     <div id="intelligent" class="col-xs-6 col-sm-5">智能模式</div>
+    <div id="manual" class="col-xs-6 col-sm-5">手动模式</div>
+
 
     <div id="decoration" class="col-xs-1 col-sm-12"></div>
-    <div id="manual_dis" class="col-xs-10  col-sm-6 col-sm-push-3">
+    <div id="manual_dis" class="col-xs-10  col-sm-6 col-sm-push-3" style="display: none">
         <p>手动模式下<br>可以遥控机器人移动<br>进行 前进/后退/左转/右转</p>
-        <a href="#">点击进入手动模式</a>
+        <a href="manual.php">点击进入手动模式</a>
     </div>
-    <div id="intelligent_dis" class="col-xs-10  col-sm-6 col-sm-push-3" style="display: none">
+    <div id="intelligent_dis" class="col-xs-10  col-sm-6 col-sm-push-3">
         <p>智能模式下<br>需要 新建 / 载入地图<br>通过功能按钮智能操控机器人</p>
-        <a href="">点击进入智能模式</a>
+        <a href="load.php">点击进入智能模式</a>
     </div>
 
 </div>
@@ -208,16 +211,22 @@ $username = $_SESSION['logged'];
     $('#manual').click(function () {
         $('#manual_dis').show();
         $('#intelligent_dis').hide();
-        $('#intelligent').css({'backgroundColor':'#2B2B2B','color':'white'});
-        $('#manual').css({'backgroundColor':'#F2F2F2','color':'black'});
+        $('#intelligent').css({'backgroundColor': '#2B2B2B', 'color': 'white'});
+        $('#manual').css({'backgroundColor': '#F2F2F2', 'color': 'black'});
     });
 
     $('#intelligent').click(function () {
         $('#intelligent_dis').show();
         $('#manual_dis').hide();
-        $('#manual').css({'backgroundColor':'#2B2B2B','color':'white'});
-        $('#intelligent').css({'backgroundColor':'#F2F2F2','color':'black'});
+        $('#manual').css({'backgroundColor': '#2B2B2B', 'color': 'white'});
+        $('#intelligent').css({'backgroundColor': '#F2F2F2', 'color': 'black'});
     });
+</script>
+
+<script>
+    $('#logout').click(function () {
+        window.location.href = 'logout.php';
+    })
 </script>
 
 </html>
