@@ -400,6 +400,7 @@ $map = isset($_POST['name']) ? $_POST['name'] : $_SESSION['map'];
             console.log(loc.outerHeight(), loc.outerWidth());
             modal.style.display = "none";
             $('#state').text('正在执行任务').removeClass('free').addClass('occupied');
+            console.log('送咖啡');
         }
     }
 

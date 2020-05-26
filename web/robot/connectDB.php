@@ -1,7 +1,7 @@
 <?php
 $host = "localhost:3306";
 $user = "root";
-$password = "dtc0126";
+$password = "";
 $dbname = "robot";
 
 $conn = @new mysqli($host, $user, $password, $dbname);
