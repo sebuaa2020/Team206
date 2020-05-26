@@ -38,6 +38,16 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="send.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/send.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHP Script.send.php" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -58,6 +68,8 @@
       <workItem from="1590371757104" duration="9297000" />
       <workItem from="1590381436081" duration="636000" />
       <workItem from="1590409730246" duration="1412000" />
+      <workItem from="1590487549625" duration="624000" />
+      <workItem from="1590493464943" duration="5811000" />
     </task>
     <servers />
   </component>

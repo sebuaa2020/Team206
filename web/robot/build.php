@@ -206,16 +206,19 @@ if (!isset($_SESSION['logged'])) {
 <script>
     $('#return').click(function () {
         history.back();
+        $.post('send.php', {instruction: 'quit'});
     });
 
     $('#save').click(function () {
         var name = prompt("请给新建地图命名！");
-        if(name===null){
+        if (name === null) {
             return;
         }
         if (name === '') {
             alert("不能为空！");
         } else {
+            $.post('send.php', {instruction: 'save'});
+            $.post('send.php', {instruction: name});
             var form = $("<form method='post' action='add_map.php'></form>");
             var input = "<input type='hidden' name='name' value='" + name + "'>";
             form.append(input);
@@ -233,10 +236,11 @@ if (!isset($_SESSION['logged'])) {
         clearInterval(InterVal);
         $('.area').addClass('bounceIn').show();
         $('#tip').hide();
+        $.post('send.php', {instruction: 'build_map'});
     });
 
     $('.op').click(function () {
-        console.log(this.id)
+        $.post('send.php', {instruction: this.id});
     })
 </script>
 
@@ -289,7 +293,7 @@ if (!isset($_SESSION['logged'])) {
         var notice = $('#notice');
         notice.addClass('bounceIn bounceOut');
         setTimeout(add_animate, 600);
-    })
+    });
 
 </script>
 

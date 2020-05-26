@@ -339,13 +339,13 @@ $map = isset($_POST['name']) ? $_POST['name'] : $_SESSION['map'];
         window.location.href = 'load.php';
     });
     $('#stop').click(function () {
-        console.log('STOP');
+        $.post('send.php',{instruction:'stop'});
     });
 
     $('#state').addClass('free');
     $('#recover').click(function () {
         if (confirm('确定回收所有咖啡杯吗？')) {
-            console.log('回收咖啡杯');
+            $.post('send.php',{instruction:'recover'});
             $('#state').text('正在执行任务').removeClass('free').addClass('occupied');
         }
     });
@@ -391,16 +391,19 @@ $map = isset($_POST['name']) ? $_POST['name'] : $_SESSION['map'];
         mouse.style.top = targetY + 'px';
         x = event.offsetX;
         y = event.offsetY;
-        setTimeout(conf,600);
+        setTimeout(conf,500);
     });
 
     function conf() {
         if (confirm("确认选择此地点")) {
-            console.log(x, y);
-            console.log(loc.outerHeight(), loc.outerWidth());
+            $.post('send.php',{instruction:'deliver'});
+            $.post('send.php',{instruction: x});
+            $.post('send.php',{instruction: y});
+            $.post('send.php',{instruction: loc.outerWidth()});
+            $.post('send.php',{instruction: loc.outerHeight()});
+
             modal.style.display = "none";
             $('#state').text('正在执行任务').removeClass('free').addClass('occupied');
-            console.log('送咖啡');
         }
     }
 

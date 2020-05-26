@@ -184,7 +184,7 @@ if (!isset($_SESSION['logged'])) {
     });
 
     $('.op').click(function () {
-        console.log(this.id)
+        $.post('send.php',{instruction:this.id});
     })
 </script>
 
@@ -237,7 +237,7 @@ if (!isset($_SESSION['logged'])) {
         var notice = $('#notice');
         notice.addClass('bounceIn bounceOut');
         setTimeout(add_animate, 600);
-    })
+    });
 
 </script>
 

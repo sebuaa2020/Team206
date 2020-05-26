@@ -179,6 +179,8 @@ $uid = $_SESSION['uid'];
     });
 
     $('#select').click(function () {
+        $.post('send.php', {instruction: 'load_map'});
+        $.post('send.php', {instruction:  $('.flag').children('input').val()});
         $('#chose').submit();
     });
 
@@ -191,6 +193,7 @@ $uid = $_SESSION['uid'];
             });
         }
     });
+
 
 </script>
 

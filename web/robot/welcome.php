@@ -226,7 +226,8 @@ $username = $_SESSION['logged'];
 <script>
     $('#logout').click(function () {
         window.location.href = 'logout.php';
-    })
+    });
+
 </script>
 
 </html>
