@@ -22,3 +22,14 @@ my_nav_package：程序中通过坐标设置航点。
 
 waypoints.xml：保存多个航点的文件。
 
+
+
+# obstacle_detect
+
+定向运动时避障模块。
+
+
+
+# test
+
+测试相关文件。
