@@ -73,9 +73,3 @@ int main(int argc, char** argv) {
 	infile.close();
     return 0;
 }
-//vel_cmd.linear.x 是机器人前后平移运动速度，正值往前，负值往后，单位是“米/秒”；
-//vel_cmd.linear.y 是机器人左右平移运动速度，正值往左，负值往右，单位是“米/秒”；
-//vel_cmd.angular.z（注意 angular）是机器人自转速度，正值左转，负值右转，单位是 “弧度/秒”；
-//ROS_INFO("Waiting for the move_base action server to come up");	这个是ros.h的基本参数
-//结构体的其余参数为0即可
-//测试数据取值范围在-0.1~0.1
