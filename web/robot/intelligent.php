@@ -293,7 +293,7 @@ $map = isset($_POST['name']) ? $_POST['name'] : $_SESSION['map'];
     <div id="deliver" class="col-sm-6 col-sm-push-3 ">
         <h3>送咖啡</h3>
         <!-- 触发弹窗 - 图片改为你的图片地址 -->
-        <img id="myImg" src="map/test.pgm" alt="选择目标地点" width="40" height="40">
+        <img id="myImg" src="map/<?php echo $map?>.pgm" alt="选择目标地点" width="40" height="40">
 
         <p>在地图上选择目标地点，机器人自动导航到达</p>
     </div>
@@ -336,15 +336,18 @@ $map = isset($_POST['name']) ? $_POST['name'] : $_SESSION['map'];
 
 <script>
     $('#return').click(function () {
+        $.post('send.php',{instruction:'stop'});
         window.location.href = 'load.php';
     });
     $('#stop').click(function () {
+        console.log('stop');
         $.post('send.php',{instruction:'stop'});
     });
 
     $('#state').addClass('free');
     $('#recover').click(function () {
         if (confirm('确定回收所有咖啡杯吗？')) {
+            console.log('recover');
             $.post('send.php',{instruction:'recover'});
             $('#state').text('正在执行任务').removeClass('free').addClass('occupied');
         }
@@ -401,6 +404,11 @@ $map = isset($_POST['name']) ? $_POST['name'] : $_SESSION['map'];
             $.post('send.php',{instruction: y});
             $.post('send.php',{instruction: loc.outerWidth()});
             $.post('send.php',{instruction: loc.outerHeight()});
+
+            console.log('deliver');
+            console.log(x,y);
+            console.log(loc.outerWidth(),loc.outerHeight());
+
 
             modal.style.display = "none";
             $('#state').text('正在执行任务').removeClass('free').addClass('occupied');

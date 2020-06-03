@@ -188,7 +188,7 @@ $username = $_SESSION['logged'];
 </div>
 
 <div id="robot_info">
-    <h4>当前机器人状态：未连接</h4>
+    <h4>提示：请确认机器人已启动</h4>
 </div>
 <footer>
     <h5>咖啡Robot - BUAA Team 206</h5>

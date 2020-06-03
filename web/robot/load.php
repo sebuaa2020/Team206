@@ -179,6 +179,8 @@ $uid = $_SESSION['uid'];
     });
 
     $('#select').click(function () {
+        console.log('load_map');
+        console.log($('.flag').children('input').val());
         $.post('send.php', {instruction: 'load_map'});
         $.post('send.php', {instruction:  $('.flag').children('input').val()});
         $('#chose').submit();
@@ -189,7 +191,7 @@ $uid = $_SESSION['uid'];
         var name = chosen.children('input').val();
         if (confirm("确定要删除地图 " + name + " 吗？")) {
             $.post("delete_map.php", {name: name}, function () {
-                chosen.remove();
+                window.location.href='load.php';
             });
         }
     });

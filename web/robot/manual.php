@@ -97,7 +97,28 @@ if (!isset($_SESSION['logged'])) {
             width: 50px;
         }
 
+
         #exit {
+            width: 100px;
+            height: 60px;
+            line-height: 50px;
+            position: absolute;
+            bottom: 70px;
+            left: 20px;
+            background-color: darkorange;
+            color: #F2F2F2;
+            font-weight: bold;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        #exit:hover {
+            transform: scale(1.12);
+        }
+
+
+        #stop {
             width: 100px;
             height: 60px;
             line-height: 50px;
@@ -110,6 +131,10 @@ if (!isset($_SESSION['logged'])) {
             font-size: 20px;
             border: none;
             border-radius: 10px;
+        }
+
+        #stop:active {
+            transform: scale(1.12);
         }
 
         footer {
@@ -160,6 +185,10 @@ if (!isset($_SESSION['logged'])) {
     <button id="exit" class="bounceIn">
         退出
     </button>
+
+    <button id="stop" class="bounceIn">
+        STOP
+    </button>
 </div>
 
 <footer>
@@ -171,8 +200,14 @@ if (!isset($_SESSION['logged'])) {
 
 <script>
     $('#exit').click(function () {
+        $.post('send.php',{instruction:'stop'});
         history.back();
-    })
+    });
+
+    $('#stop').click(function () {
+        console.log('stop');
+        $.post('send.php',{instruction:'stop'});
+    });
 </script>
 
 <script>
@@ -185,6 +220,7 @@ if (!isset($_SESSION['logged'])) {
 
     $('.op').click(function () {
         $.post('send.php',{instruction:this.id});
+        console.log(this.id);
     })
 </script>
 

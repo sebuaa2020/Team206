@@ -217,6 +217,8 @@ if (!isset($_SESSION['logged'])) {
         if (name === '') {
             alert("不能为空！");
         } else {
+            console.log('save');
+            console.log(name);
             $.post('send.php', {instruction: 'save'});
             $.post('send.php', {instruction: name});
             var form = $("<form method='post' action='add_map.php'></form>");
@@ -240,6 +242,7 @@ if (!isset($_SESSION['logged'])) {
     });
 
     $('.op').click(function () {
+        console.log(this.id);
         $.post('send.php', {instruction: this.id});
     })
 </script>

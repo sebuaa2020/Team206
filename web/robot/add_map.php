@@ -6,7 +6,10 @@ if (!isset($_SESSION['logged'])) {
     exit();
 }
 include "connectDB.php";
+system("python recv.py");
+
 $name = $_POST['name'];
 $result = mysqli_query($conn, "INSERT INTO map(uid, name, src) VALUES ('".$_SESSION['uid']."', '$name', '#')");
 $_SESSION['map'] = $name;
 header('Location:intelligent.php');
+
