@@ -3,6 +3,7 @@
 import threading
 import socket
 import struct
+from PIL import Image
 
 def socket_service():
     try:
@@ -47,7 +48,7 @@ def deal_data(conn, addr):
         print ('start receiving...')
         
         # 将分批次传输的二进制流依次写入到文件
-        while not recvd_size == filesize:
+        while recvd_size < filesize:
             if filesize - recvd_size > 1024:
                 data = conn.recv(1024)
                 recvd_size += len(data)
@@ -56,9 +57,15 @@ def deal_data(conn, addr):
                 recvd_size = filesize
             fp.write(data)
         fp.close()
+        #print(('map/' + str(fn)).split('.')[0])
+        photo_process('map/' + str(fn))
         print ('end receive...')
     # 传输结束断开连接
     conn.close()
-        
+    
+def photo_process(url) :
+    img = Image.open(url)
+    img.save(url.split('.')[0]+'.png','png')
+
 if __name__ == "__main__":
     socket_service()

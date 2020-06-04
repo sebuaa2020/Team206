@@ -293,7 +293,7 @@ $map = isset($_POST['name']) ? $_POST['name'] : $_SESSION['map'];
     <div id="deliver" class="col-sm-6 col-sm-push-3 ">
         <h3>送咖啡</h3>
         <!-- 触发弹窗 - 图片改为你的图片地址 -->
-        <img id="myImg" src="map/<?php echo $map?>.pgm" alt="选择目标地点" width="40" height="40">
+        <img id="myImg" src="map/<?php echo $map?>.png" alt="选择目标地点" width="40" height="40">
 
         <p>在地图上选择目标地点，机器人自动导航到达</p>
     </div>
