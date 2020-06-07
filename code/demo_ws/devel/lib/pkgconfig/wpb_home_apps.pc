@@ -1,8 +1,0 @@
-prefix=/home/leopord/demo_ws/devel
-
-Name: wpb_home_apps
-Description: Description of wpb_home_apps
-Version: 0.0.0
-Cflags: -I/home/leopord/demo_ws/src/wpb_home/wpb_home_apps/include
-Libs: -L${prefix}/lib 
-Requires: message_runtime

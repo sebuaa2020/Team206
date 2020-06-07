@@ -1,2 +1,0 @@
-iai_kinect2/iai_kinect2:iai_kinect2/kinect2_bridge:iai_kinect2/kinect2_calibration:iai_kinect2/kinect2_registration:iai_kinect2/kinect2_viewer:my_nav_package:my_obstacle_detect:my_vel_package:rplidar_ros:waterplus_map_tools:wpb_home/wpb_home_bringup:wpb_home/wpb_home_tutorials:wpb_home/wpbh_local_planner:wpr_simulation
--DCATKIN_DEVEL_PREFIX=/home/leopord/demo_ws/devel -DCMAKE_INSTALL_PREFIX=/home/leopord/demo_ws/install -G Unix Makefiles

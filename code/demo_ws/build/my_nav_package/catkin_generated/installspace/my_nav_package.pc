@@ -1,8 +1,0 @@
-prefix=/home/leopord/demo_ws/install
-
-Name: my_nav_package
-Description: Description of my_nav_package
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

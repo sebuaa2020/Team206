@@ -1,8 +1,0 @@
-prefix=/home/leopord/demo_ws/install
-
-Name: obstacle
-Description: Description of obstacle
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
