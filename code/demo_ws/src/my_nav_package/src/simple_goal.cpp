@@ -1,6 +1,8 @@
 #include <ros/ros.h>
 #include <move_base_msgs/MoveBaseAction.h>
 #include <actionlib/client/simple_action_client.h>
+#include <stdlib.h>
+
 typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseClient;
 
 int main(int argc, char** argv){
@@ -12,17 +14,26 @@ int main(int argc, char** argv){
     }
     move_base_msgs::MoveBaseGoal goal;
 
-    goal.target_pose.header.frame_id = "base_footprint";
+    goal.target_pose.header.frame_id = "map";
     goal.target_pose.header.stamp = ros::Time::now();
-    goal.target_pose.pose.position.x = 1.0;
+
+    double target_x, target_y;
+
+    target_x = strtod(argv[1], NULL);
+    target_y = strtod(argv[2], NULL);
+
+    ROS_INFO("destination is x: %f, y: %f", target_x, target_y);
+
+    goal.target_pose.pose.position.x = target_x;
+    goal.target_pose.pose.position.y = target_y;
     goal.target_pose.pose.orientation.w = 1.0;
 
     ROS_INFO("Sending goal");
     ac.sendGoal(goal);
     ac.waitForResult();
     if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
-        ROS_INFO("Hooray, the base moved 1 meter forward");
+        ROS_INFO("get to the destination successfully!");
     else
-        ROS_INFO("The base failed to move forward 1 meter for some reason");
+        ROS_INFO("The base failed to reach the destination");
     return 0;
 }

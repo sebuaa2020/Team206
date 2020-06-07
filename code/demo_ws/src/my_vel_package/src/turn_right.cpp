@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
 
         vel_cmd.angular.x = 0;
         vel_cmd.angular.y = 0;
-        vel_cmd.angular.z = -0.1;
+        vel_cmd.angular.z = -0.4;
 
         time--;
         vel_pub.publish(vel_cmd);

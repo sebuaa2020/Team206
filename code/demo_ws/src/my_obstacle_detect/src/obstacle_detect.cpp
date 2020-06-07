@@ -4,7 +4,7 @@
 #include <geometry_msgs/Twist.h>
 #include <stdlib.h>
 
-static const float limitDistance = 0.5;
+static const float limitDistance = 0.7;
 static float now = 0.0;
 static int step = 0;
 static int flag = 0;
