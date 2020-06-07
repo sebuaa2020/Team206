@@ -12,7 +12,7 @@ nav_input = []
 
 
 def attributeTask(mstr):
-    global p_move, p_map, p_nav, start, save_now, load_now, deliver_now
+    global p_move, p_map, p_nav, p_detect, start, save_now, load_now, deliver_now, detect_now
 
     if deliver_now and mstr[0].isdigit():
         mes = float(mstr)
@@ -27,6 +27,10 @@ def attributeTask(mstr):
             p_nav.wait()
             print("this nav is over!")
             nav_input.clear()
+            if detect_now:
+                p_detect = subprocess.Popen("rosrun wpb_home_tutorials wpb_home_obj_detect", shell=True)
+                detect_now = False
+
 
 
     if save_now:
@@ -145,10 +149,12 @@ def setTcp():
 p_move = None
 p_map = None
 p_nav = None
+p_detect = None
 start = False
 save_now = False
 load_now = False
 deliver_now = False
+detect_now = True
 
 gazebo = subprocess.Popen(gazebo_str, shell=True)
 
